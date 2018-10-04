@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.laptopnct.dichvunhadat.R;
 
 /**
- * Created by Binh on 4/13/17.
+ * Created by Thanh
  */
 
 public class TimNhaFragment extends Fragment {

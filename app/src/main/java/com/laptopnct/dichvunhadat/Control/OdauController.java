@@ -21,15 +21,12 @@ import com.laptopnct.dichvunhadat.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Binh on 4/17/17.
- */
 
 public class OdauController {
     Context context;
     CongTyModel congTyModel;
     AdapterRecyclerOdau adapterRecyclerOdau;
-    int itemdaco = 3;
+    int itemdaco = 5;
 
     public OdauController(Context context){
         this.context = context;
@@ -80,8 +77,8 @@ public class OdauController {
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if(v.getChildAt(v.getChildCount() - 1) !=null){
                     if(scrollY >= (v.getChildAt(v.getChildCount() - 1)).getMeasuredHeight() - v.getMeasuredHeight()){
-                        itemdaco += 3;
-                        congTyModel.getDanhSachCongTy(odauInterface,vitrihientai,itemdaco,itemdaco-3);
+                        itemdaco += 5;
+                        congTyModel.getDanhSachCongTy(odauInterface,vitrihientai,itemdaco,itemdaco-5);
                     }
                 }
             }

@@ -26,6 +26,9 @@ public class TienIchModel {
 
 
     public TienIchModel(){
+        hinhtienich =" ";
+        tentienich=" ";
+        maTienIch=" ";
 
     }
 
