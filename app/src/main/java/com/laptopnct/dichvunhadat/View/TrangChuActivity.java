@@ -1,5 +1,6 @@
 package com.laptopnct.dichvunhadat.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -17,7 +18,7 @@ import com.laptopnct.dichvunhadat.R;
 
 
 
-public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener, Button.OnClickListener {
+public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     ViewPager viewPagerTrangChu;
     RadioButton rdOdau, rdtimNha;
@@ -41,6 +42,7 @@ public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnP
 
         viewPagerTrangChu.addOnPageChangeListener(this);
         groupOdauTimnha.setOnCheckedChangeListener(this);
+        btnThemCongTy.setOnClickListener(this);
     }
 
     @Override
@@ -50,7 +52,7 @@ public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void onPageSelected(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 rdOdau.setChecked(true);
                 break;
@@ -70,7 +72,7 @@ public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-        switch (checkedId){
+        switch (checkedId) {
             case R.id.rd_timnha:
                 viewPagerTrangChu.setCurrentItem(1);
                 break;
@@ -83,7 +85,15 @@ public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnThemCongTy: {
+                Intent iThem = new Intent(this, ThemCongTyActivity.class);
+                startActivity(iThem);
+            }
 
+
+        }
     }
 }
 
