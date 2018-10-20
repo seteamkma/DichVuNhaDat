@@ -23,7 +23,7 @@ public class DanDuongToiCongTyController {
 
     }
 
-    public void HienThiDanDuongToiQuanAn(GoogleMap googleMap,String duongdan){
+    public void HienThiDanDuongToiCongTy(GoogleMap googleMap, String duongdan){
         parserPolyline = new ParserPolyline();
         downloadPolyLine = new DownloadPolyLine();
         downloadPolyLine.execute(duongdan);

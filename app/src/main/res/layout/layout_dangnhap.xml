@@ -115,12 +115,12 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorFacebook"
-                android:backgroundTint="@color/transparentBackgroundDangnhap"
+
                 android:drawableLeft="@drawable/icon_facebook"
                 android:paddingLeft="10dp"
                 android:text="@string/dangnhapfacebook"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent" />
+                android:textColor="#FFFF" />
 
             <Button
                 android:id="@+id/btnDangNhapGoogle"
@@ -129,15 +129,15 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark"
-                android:backgroundTint="@color/transparentBackgroundDangnhap"
+                android:background="@color/colorred"
+
                 android:drawableLeft="@drawable/icon_google"
                 android:drawablePadding="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="@string/dangnhapbanggoogle"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent" />
+                android:textColor="#FFF" />
 
             <LinearLayout
                 android:layout_width="match_parent"

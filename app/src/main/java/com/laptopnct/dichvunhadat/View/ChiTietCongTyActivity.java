@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
-
+import android.util.Log;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,6 +37,7 @@ import com.google.firebase.storage.StorageReference;
 import com.laptopnct.dichvunhadat.Control.Adapters.ApdaterBinhLuan;
 import com.laptopnct.dichvunhadat.Control.ChiTietPhongController;
 import com.laptopnct.dichvunhadat.Control.DichVuController;
+import com.laptopnct.dichvunhadat.Model.ChiNhanhCongTyModel;
 import com.laptopnct.dichvunhadat.Model.CongTyModel;
 import com.laptopnct.dichvunhadat.Model.TienIchModel;
 import com.laptopnct.dichvunhadat.R;
@@ -82,9 +83,9 @@ public class ChiTietCongTyActivity extends AppCompatActivity implements OnMapRea
         txtThoiGianHoatDong = (TextView) findViewById(R.id.txtThoiGianHoatDong);
         txtTrangThaiHoatDong = (TextView) findViewById(R.id.txtTrangThaiHoatDong);
         txtTongSoBinhLuan = (TextView) findViewById(R.id.tongSoBinhLuan);
-        txtTongSoCheckIn = (TextView) findViewById(R.id.tongSoCheckIn);
+
         txtTongSoHinhAnh = (TextView) findViewById(R.id.tongSoHinhAnh);
-        txtTongSoLuuLai = (TextView) findViewById(R.id.tongSoLuuLai);
+
         imHinhAnhCongTy = (ImageView) findViewById(R.id.imHinhCongTy);
         txtTieuDeToolbar = (TextView) findViewById(R.id.txtTieuDeToolbar);
         txtGioiHanGia = (TextView) findViewById(R.id.txtGioiHanGia);
@@ -100,7 +101,7 @@ public class ChiTietCongTyActivity extends AppCompatActivity implements OnMapRea
         btnBinhLuan = (Button) findViewById(R.id.btnBinhLuan);
         videoView = (VideoView) findViewById(R.id.videoTrailer);
         imgPlayTrailer = (ImageView) findViewById(R.id.imgPLayTrailer);
-        recyclerDichVu = (RecyclerView) findViewById(R.id.recyclerThucDon);
+        recyclerDichVu = (RecyclerView) findViewById(R.id.recyclerDichVu);
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -125,6 +126,8 @@ public class ChiTietCongTyActivity extends AppCompatActivity implements OnMapRea
     }
 
     private void HienThiChiTietCongTy(){
+
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 
@@ -151,15 +154,16 @@ public class ChiTietCongTyActivity extends AppCompatActivity implements OnMapRea
 
 
         txtTieuDeToolbar.setText(congTyModel.getTencongty());
-
         txtTenCongTy.setText(congTyModel.getTencongty());
         txtDiaChi.setText(congTyModel.getChiNhanhCongTyModelList().get(0).getDiachi());
+        double latitude = 10.787732;
+        double longitude = 106.697479;
         txtThoiGianHoatDong.setText(congTyModel.getGiomocua() + " - " + congTyModel.getGiodongcua());
         txtTongSoHinhAnh.setText(congTyModel.getHinhanhcongty().size() + "");
         txtTongSoBinhLuan.setText(congTyModel.getBinhLuanModelList().size() + "");
         txtThoiGianHoatDong.setText(giomocua + " - " + giodongcua);
 
-        DownLoadHinhTienIch();
+//        DownLoadHinhTienIch();
 
 
         if(congTyModel.getGiatoida() != 0 && congTyModel.getGiatoithieu() != 0){
@@ -220,15 +224,7 @@ public class ChiTietCongTyActivity extends AppCompatActivity implements OnMapRea
         NestedScrollView nestedScrollViewChiTiet = (NestedScrollView) findViewById(R.id.nestScrollViewChiTiet);
         nestedScrollViewChiTiet.smoothScrollTo(0,0);
 
-        chiTietPhongController.HienThiDanhSachWifiCongTy(congTyModel.getMacongty(),txtTenWifi,txtMatKhauWifi,txtNgayDangWifi);
-        khungWifi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent iDanhSachWifi = new Intent(ChiTietCongTyActivity.this,CapNhatDanhSachWifiActivity.class);
-                iDanhSachWifi.putExtra("macongty", congTyModel.getMacongty());
-                startActivity(iDanhSachWifi);
-            }
-        });
+
 
         dichVuController.getDanhSachDichVuCongTyTheoMa(this, congTyModel.getMacongty(), recyclerDichVu);
     }
@@ -244,8 +240,10 @@ public class ChiTietCongTyActivity extends AppCompatActivity implements OnMapRea
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
 
-        double latitude = congTyModel.getChiNhanhCongTyModelList().get(0).getLatitude();
-        double longitude = congTyModel.getChiNhanhCongTyModelList().get(0).getLongitude();
+//       double latitude = congTyModel.getChiNhanhCongTyModelList().get(0).getLatitude();
+//       double longitude = congTyModel.getChiNhanhCongTyModelList().get(0).getLongitude();
+        double latitude = 10.7730748;
+        double longitude = 106.7004673;
 
         LatLng latLng = new LatLng(latitude,longitude);
         MarkerOptions markerOptions = new MarkerOptions();
@@ -261,13 +259,15 @@ public class ChiTietCongTyActivity extends AppCompatActivity implements OnMapRea
     private void DownLoadHinhTienIch(){
 
         for (String matienich : congTyModel.getTienich()){
+
             DatabaseReference nodeTienIch = FirebaseDatabase.getInstance().getReference().child("quanlytienichs").child(matienich);
+
             nodeTienIch.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     TienIchModel tienIchModel = dataSnapshot.getValue(TienIchModel.class);
-
                     StorageReference storageHinhCongTy = FirebaseStorage.getInstance().getReference().child("hinhtienich").child(tienIchModel.getHinhtienich());
+
                     long ONE_MEGABYTE = 1024 * 1024;
                     storageHinhCongTy.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                         @Override
@@ -306,6 +306,11 @@ public class ChiTietCongTyActivity extends AppCompatActivity implements OnMapRea
                 Intent iDanDuong = new Intent(this,DanDuongToiCongTyActivity.class);
                 iDanDuong.putExtra("latitude", congTyModel.getChiNhanhCongTyModelList().get(0).getLatitude());
                 iDanDuong.putExtra("longitude", congTyModel.getChiNhanhCongTyModelList().get(0).getLongitude());
+
+                double latitude = 10.787732;
+                double longitude = 106.697479;
+                iDanDuong.putExtra("latitude", latitude);
+                iDanDuong.putExtra("longitude", longitude);
                 startActivity(iDanDuong);
                 break;
 

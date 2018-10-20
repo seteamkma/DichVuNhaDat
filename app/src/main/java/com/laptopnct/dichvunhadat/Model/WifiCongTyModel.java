@@ -70,7 +70,7 @@ public class WifiCongTyModel {
         });
     }
 
-    public void ThemWifiQuanAn(final Context context, WifiCongTyModel wifiCongTyModel, String macongty){
+    public void ThemWifiCongTy(final Context context, WifiCongTyModel wifiCongTyModel, String macongty){
         DatabaseReference dataNodeWifiCongTy = FirebaseDatabase.getInstance().getReference().child("wificongtys").child(macongty);
         dataNodeWifiCongTy.push().setValue(wifiCongTyModel, new DatabaseReference.CompletionListener() {
             @Override

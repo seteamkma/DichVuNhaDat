@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#989dbe</color>
     <color name="colorPrimaryDark">#989dbe</color>
-    <color name="colorAccent">#f993076d</color>
+    <color name="colorAccent">#45c1fa</color>
     <color name="colorkitu">#a9195a</color>
     <color name="transparentBackgroundDangnhap">#33000000</color>
     <color name="colorFacebook">#189aca</color>
@@ -11,4 +11,5 @@
     <color name="tranparentWhite">#CCFFFFFF</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorYellow">#c807f4</color>
+    <color name="colorred">#c1113d</color>
 </resources>

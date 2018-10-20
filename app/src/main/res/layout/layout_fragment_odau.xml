@@ -141,29 +141,6 @@
                         android:gravity="left|center"
                         android:drawablePadding="10dp"
                         />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/colorAccent"
-                        android:layout_margin="5dp"
-                        android:text="@string/gameandfun"
-                        android:textAllCaps="false"
-                        android:drawableLeft="@drawable/gameandfun"
-                        android:padding="10dp"
-                        android:gravity="left|center"
-                        android:drawablePadding="10dp"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -178,21 +155,10 @@
                         android:drawablePadding="10dp"
                         />
 
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/colorAccent"
-                        android:layout_margin="5dp"
-                        android:text="@string/topmember"
-                        android:textAllCaps="false"
-                        android:drawableLeft="@drawable/user"
-                        android:padding="10dp"
-                        android:gravity="left|center"
-                        android:drawablePadding="10dp"
-                        />
 
                 </LinearLayout>
+
+
 
 
                 <android.support.v7.widget.RecyclerView

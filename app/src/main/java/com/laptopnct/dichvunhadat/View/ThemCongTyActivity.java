@@ -455,7 +455,7 @@ public class ThemCongTyActivity extends AppCompatActivity implements  View.OnCli
 
             case R.id.imgVideo:
                 Intent intent = new Intent();
-                intent.setType("video/*");
+                intent.setType("videos/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent,"Chọn video..."),RESULT_VIDEO);
                 break;
@@ -467,7 +467,7 @@ public class ThemCongTyActivity extends AppCompatActivity implements  View.OnCli
     }
 
     private void ThemCongTy(){
-        String tenQuanAn = edTenCongTy.getText().toString();
+        String tenCongTy = edTenCongTy.getText().toString();
         long giaToiDa = Long.parseLong(edGiaToiDa.getText().toString());
         long giaToiThieu = Long.parseLong(edGiaThoiThieu.getText().toString());
         int idRadioSelected = rdgTrangThai.getCheckedRadioButtonId();
@@ -491,16 +491,16 @@ public class ThemCongTyActivity extends AppCompatActivity implements  View.OnCli
 
         }
 
-        CongTyModel quanAnModel = new CongTyModel();
-        quanAnModel.setTencongty(tenQuanAn);
-        quanAnModel.setGiatoida(giaToiDa);
-        quanAnModel.setGiatoithieu(giaToiThieu);
-        quanAnModel.setDatcoc(giaoHang);
-        quanAnModel.setVideogioithieu(videoSelected.getLastPathSegment());
-        quanAnModel.setTienich(selectedTienIchList);
-        quanAnModel.setLuotthich(0);
+        CongTyModel congTyModel = new CongTyModel();
+        congTyModel.setTencongty(tenCongTy);
+        congTyModel.setGiatoida(giaToiDa);
+        congTyModel.setGiatoithieu(giaToiThieu);
+        congTyModel.setDatcoc(giaoHang);
+        congTyModel.setVideogioithieu(videoSelected.getLastPathSegment());
+        congTyModel.setTienich(selectedTienIchList);
+        congTyModel.setLuotthich(0);
 
-        nodeCongTy.child(maCongTy).setValue(quanAnModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+        nodeCongTy.child(maCongTy).setValue(congTyModel).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
 

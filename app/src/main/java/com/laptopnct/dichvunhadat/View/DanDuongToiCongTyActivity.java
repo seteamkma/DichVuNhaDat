@@ -6,7 +6,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,7 +28,7 @@ public class DanDuongToiCongTyActivity extends AppCompatActivity implements OnMa
     SharedPreferences sharedPreferences;
     Location vitrihientai;
 
-    DanDuongToiCongTyController danDuongToiQuanAnController;
+    DanDuongToiCongTyController danDuongToiCongTyController;
     String duongdan = "";
 
     @Override
@@ -37,7 +36,7 @@ public class DanDuongToiCongTyActivity extends AppCompatActivity implements OnMa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_danduong);
 
-        danDuongToiQuanAnController = new DanDuongToiCongTyController();
+        danDuongToiCongTyController = new DanDuongToiCongTyController();
 
 
         latitude = getIntent().getDoubleExtra("latitude",0);
@@ -48,7 +47,7 @@ public class DanDuongToiCongTyActivity extends AppCompatActivity implements OnMa
         vitrihientai.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude","0")));
         vitrihientai.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude","0")));
 
-        duongdan = "https://maps.googleapis.com/maps/api/directions/json?origin=" + vitrihientai.getLatitude() + "," + vitrihientai.getLongitude() + "&destination=" +latitude+"," + longitude + "&language=vi&key=AIzaSyCSNQCX6UYnoiq-BSoaHRdQvmPovWRQeSY";
+        duongdan = "https://maps.googleapis.com/maps/api/directions/json?origin=" + vitrihientai.getLatitude() + "," + vitrihientai.getLongitude() + "&destination=" +latitude+"," + longitude + "&language=vi&key=AIzaSyAXtIZoXY2Dj5KgXJz053O35jRUAPEOUqs";
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -67,14 +66,14 @@ public class DanDuongToiCongTyActivity extends AppCompatActivity implements OnMa
         markerOptions.position(latLng);
         googleMap.addMarker(markerOptions);
 
-        LatLng vitriquanan = new LatLng(latitude,longitude);
-        MarkerOptions markervitriquanan = new MarkerOptions();
-        markervitriquanan.position(vitriquanan);
-        googleMap.addMarker(markervitriquanan);
+        LatLng vitricongty = new LatLng(latitude,longitude);
+        MarkerOptions markervitricongty = new MarkerOptions();
+        markervitricongty.position(vitricongty);
+        googleMap.addMarker(markervitricongty);
 
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,14);
         googleMap.moveCamera(cameraUpdate);
 
-        danDuongToiQuanAnController.HienThiDanDuongToiQuanAn(googleMap,duongdan);
+        danDuongToiCongTyController.HienThiDanDuongToiCongTy(googleMap,duongdan);
     }
 }

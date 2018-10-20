@@ -22,7 +22,7 @@ public class AdapterDichVu extends RecyclerView.Adapter<AdapterDichVu.HolderThuc
 
     public AdapterDichVu(Context context, List<DichVuModel> dichVuModels){
         this.context = context;
-        this.dichVuModels = this.dichVuModels;
+        this.dichVuModels = dichVuModels;
     }
 
     @Override

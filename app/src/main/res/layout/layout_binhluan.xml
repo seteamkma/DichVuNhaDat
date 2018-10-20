@@ -43,7 +43,7 @@
             android:id="@+id/txtTenCongTy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gogi house"
+            android:text="Nhà Trọ Cô Lan"
             android:textSize="15sp"
             android:textStyle="bold"
             />

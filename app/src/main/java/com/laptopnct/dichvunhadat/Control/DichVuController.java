@@ -26,9 +26,9 @@ public class DichVuController {
         DichVuInterface dichVuInterface = new DichVuInterface() {
             @Override
             public void getDichVuThanhCong(List<DichVuModel> dichVuModelList) {
-                AdapterDichVu adapterThucDon = new AdapterDichVu(context,dichVuModelList);
-                recyclerView.setAdapter(adapterThucDon);
-                adapterThucDon.notifyDataSetChanged();
+                AdapterDichVu adapterDichVu = new AdapterDichVu(context,dichVuModelList);
+                recyclerView.setAdapter(adapterDichVu);
+                adapterDichVu.notifyDataSetChanged();
             }
         };
         dichVuModel.getDanhSachDichVuCongTyTheoMa(macongty,dichVuInterface);

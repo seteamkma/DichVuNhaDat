@@ -67,16 +67,6 @@
 
         </activity>
 
-        <activity android:name=".View.CapNhatDanhSachWifiActivity">
-
-        </activity>
-
-        <activity android:name=".View.PopupCapNhatWifiActivity"
-            android:theme="@style/Theme.AppCompat.Light.Dialog"
-            >
-
-        </activity>
-
         <activity android:name=".View.DanDuongToiCongTyActivity">
 
         </activity>

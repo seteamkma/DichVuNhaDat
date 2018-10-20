@@ -20,12 +20,12 @@ import java.util.List;
 public class AdapterPhong extends RecyclerView.Adapter<AdapterPhong.HolderPhong> {
 
     Context context;
-    List<PhongModel> monAnModelList;
+    List<PhongModel> phongModelList;
     public static List<DatPhong> datMonList = new ArrayList<>();
 
-    public AdapterPhong(Context context, List<PhongModel> monAnModelList){
+    public AdapterPhong(Context context, List<PhongModel> phongModelList){
         this.context = context;
-        this.monAnModelList = monAnModelList;
+        this.phongModelList = phongModelList;
 
     }
 
@@ -37,68 +37,44 @@ public class AdapterPhong extends RecyclerView.Adapter<AdapterPhong.HolderPhong>
 
     @Override
     public void onBindViewHolder(final HolderPhong holder, int position) {
-        final PhongModel phongModel = monAnModelList.get(position);
+        final PhongModel phongModel = phongModelList.get(position);
         holder.txtTenPhong.setText(phongModel.getTenphong());
-
         holder.txtSoLuong.setTag(0);
-        holder.imgTangSoLuong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int dem = Integer.parseInt(holder.txtSoLuong.getTag().toString());
-                dem++;
-                holder.txtSoLuong.setText(dem+"");
-                holder.txtSoLuong.setTag(dem);
 
-                DatPhong datPhongTag = (DatPhong) holder.imgGiamSoLuong.getTag();
-                if(datPhongTag != null){
-                    AdapterPhong.datMonList.remove(datPhongTag );
-                }
 
-                DatPhong datPhong = new DatPhong();
-                datPhong.setSoLuong(dem);
-                datPhong.setTenPhong(phongModel.getTenphong());
-
-                holder.imgGiamSoLuong.setTag(datPhong);
-
-                AdapterPhong.datMonList.add(datPhong);
-
-            }
-        });
-
-        holder.imgGiamSoLuong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int dem = Integer.parseInt(holder.txtSoLuong.getTag().toString());
-                if(dem != 0){
-                    dem--;
-                    if(dem == 0){
-                        DatPhong datPhong= (DatPhong) v.getTag();
-                        AdapterPhong.datMonList.remove(datPhong);
-                    }
-                }
-
-                holder.txtSoLuong.setText(dem+"");
-                holder.txtSoLuong.setTag(dem);
-
-            }
-        });
+//
+//        holder.imgGiamSoLuong.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int dem = Integer.parseInt(holder.txtSoLuong.getTag().toString());
+//                if(dem != 0){
+//                    dem--;
+//                    if(dem == 0){
+//                        DatPhong datPhong= (DatPhong) v.getTag();
+//                        AdapterPhong.datMonList.remove(datPhong);
+//                    }
+//                }
+//
+//
+//                holder.txtSoLuong.setTag(dem);
+//
+//            }
+//        });
     }
 
     @Override
     public int getItemCount() {
-        return monAnModelList.size();
+        return phongModelList.size();
     }
 
     public class HolderPhong extends RecyclerView.ViewHolder {
         TextView txtTenPhong,txtSoLuong;
-        ImageView imgGiamSoLuong,imgTangSoLuong;
+
 
         public HolderPhong(View itemView) {
             super(itemView);
-            txtTenPhong = (TextView) itemView.findViewById(R.id.txtTenMonAn);
-            txtSoLuong = (TextView) itemView.findViewById(R.id.txtSoLuong);
-            imgGiamSoLuong = (ImageView) itemView.findViewById(R.id.imgGiamSoLuong);
-            imgTangSoLuong = (ImageView) itemView.findViewById(R.id.imgTangSoLuong);
+            txtTenPhong = (TextView) itemView.findViewById(R.id.txtTenPhong);
+            txtSoLuong = (TextView) itemView.findViewById(R.id.txtGiaTien);
         }
     }
 }

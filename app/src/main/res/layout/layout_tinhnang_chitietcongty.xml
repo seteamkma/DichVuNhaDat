@@ -22,10 +22,9 @@
 
         <View
             android:id="@+id/khungTinhNang"
-            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:background="@color/tranparentWhite"
-            />
+            android:layout_height="match_parent"
+            android:background="@color/tranparentWhite" />
 
         <LinearLayout
             android:layout_width="match_parent"

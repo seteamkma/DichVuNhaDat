@@ -33,7 +33,7 @@ public class TienIchModel {
     }
 
     public String getHinhtienich() {
-        return hinhtienich;
+        return this.hinhtienich;
     }
 
     public void setHinhtienich(String hinhtienich) {
@@ -41,7 +41,7 @@ public class TienIchModel {
     }
 
     public String getTentienich() {
-        return tentienich;
+        return this.tentienich;
     }
 
     public void setTentienich(String tentienich) {
